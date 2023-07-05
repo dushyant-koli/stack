@@ -1,0 +1,129 @@
+//stack using stl
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    
+    //creatiom of stack
+    stack<int> s;
+    
+    //push operatin
+    s.push(2);//sbse phle push kiya 
+    s.push(3);
+    
+    //pop opertion
+    //2 cant be poped vo phle push kiya tha
+    s.pop();//we cant insert here to pop element 
+    // cout<<"poping 3 "<<s.pop()<<endl;//this will not work
+    
+    cout<<"printing top element "<<s.top()<<endl;
+
+if(s.empty()){
+    cout<<"stack is empty "<<endl;
+}
+else{
+    cout<<"stack is not empty "<<endl;
+}
+
+cout<<"size of stack is "<<s.size()<<endl;//size is 1 jo element top pe pda h
+    return 0;
+}
+
+
+
+//stack perform using class stck without stl
+#include <iostream>
+using namespace std;
+
+class stack{
+  //properties
+  public:
+  int* arr;
+  int top;
+  int size;
+  
+  //behaviour
+  stack(int size){ 
+      this->size=size;//constructor initialize size 
+      arr=new int[size];//arr ko memory provide karayi
+      top=-1;//ini. top with -1
+      
+  }
+  
+  //push me element diya 
+  void push(int element){
+       if(size-top>1){//atleast 1 space khali h
+           top++;//top ko aage badaya
+           arr[top]=element;//elememt top pe insert kiya
+           
+       }
+       else{
+           cout<<"stack overflow "<<endl;
+       }
+       
+  }
+  void pop(){
+      if(top>=0){
+          top--;//pop kiya 
+      }
+      else{
+          cout<<"stack underflow "<<endl;
+          
+      }
+  }
+  
+  int peek(){
+      if(top>=0 && top<size)
+      return arr[top];//arr ka top return krdo
+      else{
+          cout<<"stack is empty "<<endl;
+          
+          return -1;//jb stack empty 
+      }
+  }
+  bool isempty(){
+      if(top==-1){
+          return true;
+      }
+          else{
+              return false;
+          }
+      }
+  
+};
+
+int main(){
+    
+    stack st(5);//stack st banaya jiska size 5 dediya
+    //push if we push 6 element they overflow
+    st.push(22);
+    st.push(43);
+    st.push(44);
+    st.push(66);
+    st.push(88);
+    st.push(11);
+    
+    //seeing top element after pushing all
+    cout<<st.peek()<<endl;
+    
+    //ab pop kiya 
+st.pop();//sbse top element pop hoga
+
+//pop krke phir peek dekha
+cout<<st.peek()<<endl;
+ 
+ //
+ st.pop();
+ 
+ cout<<st.peek()<<endl;
+ 
+ if(st.isempty()){
+     cout<<"stack is empty "<<endl;
+     
+ }
+ else{
+     cout<<"not empty "<<endl;
+ }
+ }
+
